@@ -141,59 +141,101 @@ footer{text-align:center;color:var(--muted);font-size:13px}
 
 <!-- EXPERIENCE -->
 <section id="experience" class="card">
-<h2>Professional Experience</h2>
+  <h2>Professional Experience</h2>
 
-<div class="project">
-  <div class="meta">Founder & Lead — Independent Work</div>
-  <h3>Independent Cybersecurity Lab</h3>
-  <p class="muted">
-    Designed and operated hands-on network security labs focused on firewall rule behavior, routing and NAT validation,
-    VPN connectivity, and incident simulation. Led a small team to reproduce real-world failures and analyze PCAPs,
-    firewall logs, and routing behavior to identify root causes.
-  </p>
-  <p class="muted">
-    Built Palo Alto–aligned troubleshooting workflows covering policy hits, NAT issues, asymmetric routing,
-    TLS failures, and VPN tunnel instability.
-  </p>
-</div>
+  <!-- SOC ANALYST -->
+  <div class="project">
+    <div class="meta">Network Security Operations • SOC</div>
+    <h3>Cybersecurity SOC Analyst — California State University, Dominguez Hills</h3>
+    <p class="muted"><em>2024 – Present</em></p>
 
-<div class="project">
-  <div class="meta">Law Enforcement Cyber Operations</div>
-  <h3>Intern Security Analyst — Gurugram Police Cyber Security Internship</h3>
-  <p class="muted">
-    Conducted threat mitigation and assisted in cyber forensic investigations involving malware,
-    fraud, and illicit online activity. Analyzed dark web activity and cryptocurrency transactions
-    to support cybercrime investigations.
-  </p>
-  <p class="muted">
-    Performed web testing and assisted with firewall implementations to improve defensive posture
-    against malicious traffic and network-based attacks.
-  </p>
-</div>
+    <p class="muted">
+      Monitor and defend enterprise network infrastructure by analyzing security events across firewalls,
+      IDS/IPS, VPNs, and endpoints. Operate in a SOC environment with a strong focus on network-based threats
+      and incident response.
+    </p>
 
-<div class="project">
-  <div class="meta">Enterprise Risk & Security</div>
-  <h3>Risk Management Analyst — Amazon</h3>
-  <p class="muted">
-    Performed risk assessments and investigations related to fraud detection and prevention within
-    enterprise systems. Analyzed behavioral patterns and transaction data to identify potential
-    security risks and anomalies.
-  </p>
-  <p class="muted">
-    Collaborated with internal teams to document findings, communicate risk insights, and support
-    mitigation strategies aligned with organizational security controls.
-  </p>
-</div>
+    <ul class="muted">
+      <li>Monitor SIEM dashboards ingesting logs from firewalls, IDS/IPS, VPNs, and <strong>500+ endpoints</strong>, reducing alert triage time by <strong>30%</strong>.</li>
+      <li>Triaged and investigated <strong>700+ security alerts</strong>, prioritizing network-based threats and minimizing false positives.</li>
+      <li>Analyzed anomalous traffic patterns, beaconing activity, and lateral movement using firewall logs and packet captures.</li>
+      <li>Supported incident response by validating firewall changes, documenting root cause, and confirming remediation effectiveness.</li>
+    </ul>
+  </div>
 
-<div class="project">
-  <div class="meta">International Cybersecurity Program</div>
-  <h3>Intern Security Analyst — Indo-Dutch Cyber Security School (Hague University)</h3>
-  <p class="muted">
-    Participated in international cyber resilience programs and security challenges focused on
-    real-world attack and defense scenarios. Analyzed cyber forensic case studies and studied
-    global cybersecurity regulations including GDPR and CCPA.
-  </p>
-</div>
+  <!-- NETWORK / FIREWALL ANALYST -->
+  <div class="project">
+    <div class="meta">Firewall Engineering • Network Security</div>
+    <h3>Cyber Security Analyst – Network & Firewall Security — Crystalline Software</h3>
+    <p class="muted"><em>Jan 2023 – Jan 2024 · Hyderabad, India</em></p>
+
+    <p class="muted">
+      Supported network security operations for enterprise environments with a strong emphasis on
+      firewall engineering, VPN connectivity, and incident-driven troubleshooting.
+    </p>
+
+    <ul class="muted">
+      <li>Supported network security operations for <strong>15+ enterprise applications</strong>, monitoring Palo Alto and Cisco firewalls, IDS/IPS alerts, and SIEM dashboards.</li>
+      <li>Reviewed, optimized, and validated <strong>200+ firewall and NAT rules</strong>, eliminating shadow rules and reducing misconfigurations by <strong>30%</strong>.</li>
+      <li>Troubleshot TCP/IP connectivity, VPN tunnels, NAT translations, and routing issues using Wireshark and PCAP analysis.</li>
+      <li>Investigated <strong>40+ network security incidents</strong>, identifying malicious traffic, policy violations, and lateral movement attempts.</li>
+      <li>Integrated firewall, VPN, and IDS logs into <strong>Splunk SIEM</strong>, improving visibility and reducing mean time to detect (MTTD) by <strong>25%</strong>.</li>
+      <li>Conducted vulnerability remediation validation, reducing high-risk network findings by <strong>35%</strong>.</li>
+      <li>Developed <strong>Python scripts</strong> for firewall log parsing and reporting, improving troubleshooting efficiency by <strong>20%</strong>.</li>
+    </ul>
+  </div>
+
+  <!-- CYBER LAB -->
+  <div class="project">
+    <div class="meta">Founder & Lead • Hands-on Labs</div>
+    <h3>Independent Cybersecurity Lab</h3>
+
+    <p class="muted">
+      Founded and lead an independent cybersecurity lab focused on hands-on firewall engineering,
+      network troubleshooting, and incident simulation aligned with enterprise security environments.
+    </p>
+
+    <ul class="muted">
+      <li>Designed and operated lab environments simulating Palo Alto–style firewall policies, NAT behavior, and VPN connectivity.</li>
+      <li>Reproduced real-world failure scenarios including asymmetric routing, NAT mismatches, TLS handshake failures, and blocked application traffic.</li>
+      <li>Built repeatable troubleshooting playbooks using PCAP analysis, firewall logs, and routing validation.</li>
+    </ul>
+  </div>
+
+  <!-- LAW ENFORCEMENT -->
+  <div class="project">
+    <div class="meta">Cyber Forensics • Law Enforcement</div>
+    <h3>Intern Security Analyst — Gurugram Police Cyber Security Internship</h3>
+
+    <p class="muted">
+      Assisted in cybercrime investigations and threat mitigation activities within a law enforcement environment.
+    </p>
+
+    <ul class="muted">
+      <li>Conducted threat mitigation and supported digital forensic investigations involving malware and online fraud.</li>
+      <li>Analyzed dark web activity and cryptocurrency transactions to support cybercrime investigations.</li>
+      <li>Performed web testing and assisted with firewall implementations to strengthen network defenses.</li>
+    </ul>
+  </div>
+
+  <!-- AMAZON -->
+  <div class="project">
+    <div class="meta">Enterprise Risk • Security Operations</div>
+    <h3>Risk Management Analyst — Amazon</h3>
+    <p class="muted"><em>Jun 2019 – Jan 2020 · Hyderabad, India</em></p>
+
+    <p class="muted">
+      Performed enterprise risk analysis and investigations related to fraud detection and prevention,
+      contributing to security and risk mitigation efforts.
+    </p>
+
+    <ul class="muted">
+      <li>Conducted risk assessments and fraud investigations to identify anomalous activity and operational risks.</li>
+      <li>Analyzed behavioral and transaction patterns to support fraud detection and prevention initiatives.</li>
+      <li>Collaborated with cross-functional teams to document findings and communicate risk insights.</li>
+    </ul>
+  </div>
+
 </section>
 
 <!-- SKILLS -->
