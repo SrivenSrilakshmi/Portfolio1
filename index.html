@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sriven Srilakshmi — Network Security Operations & Firewall Engineering</title>
-  <meta name="description" content="Network Security Operations / Firewall Engineering — Palo Alto, Cisco ASA/Firepower, VPN, routing/switching, IDS/IPS, SIEM, cloud security, automation." />
+  <meta name="description" content="Network Security Operations / Firewall Engineering — Palo Alto, Cisco ASA/Firepower, VPN, routing, IDS/IPS, SIEM, automation." />
 
   <style>
     :root{
@@ -13,9 +13,7 @@
       --accent:#00ff9f;
       --mono: 'SFMono-Regular', ui-monospace, Menlo, Monaco, "Roboto Mono", monospace;
     }
-
     *{box-sizing:border-box}
-
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
@@ -27,9 +25,7 @@
       line-height:1.45;
       padding:32px;
     }
-
     .container{max-width:1100px;margin:0 auto;display:grid;gap:28px}
-
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006));
       border:1px solid rgba(255,255,255,0.04);
@@ -59,7 +55,7 @@
       text-decoration:none;
     }
 
-    /* GRIDS */
+    /* GRID */
     .grid-2{display:grid;grid-template-columns:1fr 360px;gap:22px}
     .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     @media (max-width:900px){
@@ -71,11 +67,11 @@
     p.lead{color:var(--muted);margin-bottom:12px}
 
     .line,.project{
-      padding:12px;
+      padding:14px;
       border-radius:8px;
       background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
       border:1px solid rgba(255,255,255,0.03);
-      margin-bottom:12px;
+      margin-bottom:14px;
     }
     .project{border-left:3px solid var(--accent)}
     .meta{color:var(--muted);font-size:13px;margin-bottom:6px}
@@ -111,11 +107,13 @@
   <div class="avatar">SS</div>
   <div>
     <h1>Sriven Srilakshmi</h1>
-    <div class="muted">Network Security Operations • Firewall Engineering • Incident Troubleshooting</div>
+    <div class="muted">
+      Network Security Operations • Firewall Engineering • Incident Troubleshooting
+    </div>
   </div>
   <div class="cta">
-    <a class="btn" href="#skills">Skills</a>
     <a class="btn" href="#experience">Experience</a>
+    <a class="btn" href="#skills">Skills</a>
     <a class="btn" href="#projects">Projects</a>
     <a class="btn" href="#contact">Contact</a>
   </div>
@@ -131,43 +129,34 @@
       traffic flows end-to-end, and secure network paths using packet-level analysis, log correlation,
       and targeted automation.
     </p>
-
     <p class="lead">
-      I founded and lead an independent cybersecurity lab where I work with a small team to simulate
-      real-world network security scenarios, validate firewall and routing behavior, and build repeatable
-      troubleshooting and hardening workflows.
+      I founded and lead an independent cybersecurity lab where I simulate real-world network security
+      scenarios, validate firewall and routing behavior, analyze encrypted and unencrypted traffic,
+      and develop repeatable troubleshooting and hardening workflows.
     </p>
-
     <p class="lead">
       I am the author of the research paper
       <em>“End-to-End Privacy-Aware Federated Learning for Wearable Health Devices via Encrypted Aggregation in Programmable Networks.”</em>
-      This work strengthened my understanding of encrypted traffic behavior and secure data flows.
+      This work strengthened my understanding of encrypted traffic behavior, secure data aggregation,
+      and privacy-aware network design.
     </p>
 
-    <h2>What I do</h2>
+    <h2>Core Responsibilities</h2>
     <div class="cols">
       <div class="line">
-        <strong>Firewall Operations</strong>
-        <div class="muted">Policy design • NAT • Panorama/FMC • VPN</div>
+        <strong>Firewall & Network Operations</strong>
+        <div class="muted">
+          Policy design and cleanup • NAT / No-NAT validation • Zone-based segmentation • VPN configuration
+          • Change management (Panorama / FMC-style workflows)
+        </div>
       </div>
       <div class="line">
-        <strong>Troubleshooting</strong>
-        <div class="muted">PCAP/Wireshark • Logs • Root-cause analysis</div>
+        <strong>Incident Troubleshooting</strong>
+        <div class="muted">
+          PCAP/Wireshark analysis • Firewall & SIEM log correlation • Session tracing • Root-cause analysis
+          • Preventive remediation
+        </div>
       </div>
-    </div>
-
-    <h2>Toolbox</h2>
-    <div>
-      <span class="pill">Palo Alto</span>
-      <span class="pill">Cisco ASA</span>
-      <span class="pill">Firepower</span>
-      <span class="pill">Wireshark</span>
-      <span class="pill">SIEM</span>
-      <span class="pill">VPN</span>
-      <span class="pill">OSPF</span>
-      <span class="pill">BGP</span>
-      <span class="pill">Python</span>
-      <span class="pill">Ansible</span>
     </div>
   </div>
 
@@ -181,68 +170,102 @@
 
 <!-- EXPERIENCE -->
 <section id="experience" class="card">
-  <h2>Professional & Technical Experience</h2>
+  <h2>Professional Experience</h2>
 
   <div class="project">
-    <div class="meta">Founder & Lead</div>
+    <div class="meta">Founder & Lead • Independent Work</div>
     <h3>Independent Cybersecurity Lab</h3>
     <p class="muted">
-      Lead hands-on security labs focused on firewall engineering, routing behavior,
-      traffic analysis, and incident simulation using PCAP and logs.
+      Designed and operated hands-on network security labs focused on firewall behavior, routing validation,
+      VPN connectivity, and incident simulation. Led a small team to reproduce real-world failures, analyze
+      packet captures, and validate firewall rules and NAT behavior under different traffic conditions.
+    </p>
+    <p class="muted">
+      Built structured troubleshooting workflows using PCAP analysis, log correlation, and configuration
+      verification to isolate root causes and improve network stability and security posture.
     </p>
   </div>
 
   <div class="project">
-    <div class="meta">Industry</div>
+    <div class="meta">Industry • Security Operations</div>
     <h3>Cyber Security Analyst — Crystalline Software</h3>
     <p class="muted">
-      Supported security monitoring, alert triage, and SIEM-based investigations.
+      Supported day-to-day security operations by monitoring alerts, reviewing logs, and assisting in
+      incident investigations. Worked with SIEM platforms to analyze events, identify suspicious activity,
+      and escalate potential threats following defined security procedures.
+    </p>
+    <p class="muted">
+      Gained exposure to operational security workflows, alert triage, and structured incident response
+      in an enterprise-style environment.
     </p>
   </div>
 
   <div class="project">
-    <div class="meta">Academic</div>
-    <h3>Research Assistant — CSU Dominguez Hills</h3>
+    <div class="meta">Academic • Applied Security</div>
+    <h3>Research Assistant — California State University, Dominguez Hills</h3>
     <p class="muted">
-      Conducted applied cybersecurity research and secure systems analysis.
+      Conducted applied cybersecurity research focused on secure communication, encrypted data handling,
+      and network-aware system design. Assisted with implementation, experimentation, and documentation
+      of security-focused projects.
     </p>
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills" class="card">
-  <h2>Skills</h2>
+  <h2>Technical Skills</h2>
+
   <div class="skills">
-    <div class="skill">Firewall Engineering</div>
-    <div class="skill">Network Security Ops</div>
-    <div class="skill">Palo Alto / Cisco</div>
-    <div class="skill">TCP/IP • VLAN • NAT</div>
-    <div class="skill">OSPF • BGP</div>
+    <div class="skill">Firewall Engineering (Policy, NAT, Zones)</div>
+    <div class="skill">Palo Alto (PAN-OS, Panorama, GlobalProtect)</div>
+    <div class="skill">Cisco ASA / Firepower (FMC)</div>
+    <div class="skill">VPN (Site-to-Site & Remote Access)</div>
+    <div class="skill">TCP/IP, Routing & Switching</div>
+    <div class="skill">VLANs, OSPF, BGP</div>
+    <div class="skill">Wireshark & PCAP Analysis</div>
+    <div class="skill">Firewall & SIEM Log Analysis</div>
     <div class="skill">IDS / IPS</div>
-    <div class="skill">SIEM</div>
-    <div class="skill">Automation</div>
+    <div class="skill">Cloud Security (AWS / Azure / GCP)</div>
+    <div class="skill">Python, Ansible, PowerShell (Automation)</div>
   </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="card">
-  <h2>Security Projects</h2>
+  <h2>Selected Security Projects</h2>
 
   <div class="project">
-    <h3>Firewall Policy Optimization</h3>
-    <p class="muted">Least-privilege rules, NAT validation, rule-hit analysis.</p>
+    <h3>Firewall Policy Optimization & Segmentation</h3>
+    <p class="muted">
+      Designed least-privilege firewall rulebases, validated NAT behavior, and analyzed rule hit counts
+      to reduce unnecessary exposure while maintaining required connectivity.
+    </p>
   </div>
 
   <div class="project">
-    <h3>VPN Troubleshooting Playbooks</h3>
-    <p class="muted">GlobalProtect / ASA-style remote access diagnosis.</p>
+    <h3>VPN Connectivity Troubleshooting Playbooks</h3>
+    <p class="muted">
+      Developed structured troubleshooting workflows for remote access and site-to-site VPN issues,
+      covering authentication, routing, DNS, and tunnel stability.
+    </p>
+  </div>
+
+  <div class="project">
+    <h3>Packet-to-Policy Root Cause Analysis</h3>
+    <p class="muted">
+      Performed end-to-end packet analysis to diagnose connectivity issues caused by routing asymmetry,
+      NAT mismatch, MTU problems, and misconfigured firewall rules.
+    </p>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="card">
   <h2>Contact</h2>
-  <p class="muted">Open to Network Security & Firewall Engineering roles.</p>
+  <p class="muted">
+    Open to Network Security Operations and Firewall Engineering roles.
+    Happy to discuss hands-on experience, lab work, and security projects.
+  </p>
 </section>
 
 <footer>
