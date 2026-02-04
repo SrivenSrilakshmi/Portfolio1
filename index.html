@@ -5,406 +5,254 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sriven Srilakshmi — Network Security Operations & Firewall Engineering</title>
   <meta name="description" content="Network Security Operations / Firewall Engineering — Palo Alto, Cisco ASA/Firepower, VPN, routing/switching, IDS/IPS, SIEM, cloud security, automation." />
+
   <style>
     :root{
       --bg:#0b0f13;
       --muted:#98a0a6;
-      --accent:#00ff9f; /* neon green */
+      --accent:#00ff9f;
       --mono: 'SFMono-Regular', ui-monospace, Menlo, Monaco, "Roboto Mono", monospace;
     }
+
     *{box-sizing:border-box}
+
     body{
       margin:0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
       background:
         radial-gradient(1200px 600px at 10% 10%, rgba(0,255,159,0.03), transparent 8%),
         radial-gradient(900px 500px at 90% 90%, rgba(0,255,159,0.02), transparent 10%),
         var(--bg);
       color:#e6eef2;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
       padding:32px;
     }
-    .container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns: 1fr;gap:28px}
+
+    .container{max-width:1100px;margin:0 auto;display:grid;gap:28px}
+
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006));
       border:1px solid rgba(255,255,255,0.04);
       border-left:4px solid rgba(0,255,159,0.10);
-      padding:22px;border-radius:12px;backdrop-filter: blur(6px);
+      padding:22px;
+      border-radius:12px;
       box-shadow: 0 6px 30px rgba(1,6,9,0.6);
     }
+
+    /* HERO */
     .hero{display:flex;gap:18px;align-items:center}
     .avatar{
       width:110px;height:110px;border-radius:14px;
       background:linear-gradient(180deg,#071013,#0a1114);
-      border:1px solid rgba(255,255,255,0.04);
-      display:flex;align-items:center;justify-content:center;font-family:var(--mono);
-      color:var(--accent);font-weight:800;font-size:28px;
-      box-shadow: inset 0 -6px 24px rgba(0,0,0,0.6);
+      display:flex;align-items:center;justify-content:center;
+      font-family:var(--mono);
+      color:var(--accent);
+      font-weight:800;font-size:28px;
     }
-    .hero h1{margin:0;font-size:28px;letter-spacing:0.2px}
-    .tagline{color:var(--muted);margin-top:6px}
-    .cta{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .cta{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
     .btn{
-      padding:10px 14px;border-radius:10px;font-weight:700;background:transparent;border:1px solid rgba(0,255,159,0.14);
-      color:var(--accent);cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block;
+      padding:10px 14px;border-radius:10px;
+      font-weight:700;
+      background:transparent;
+      border:1px solid rgba(0,255,159,0.14);
+      color:var(--accent);
+      text-decoration:none;
     }
-    .grid-2{display:grid;grid-template-columns: 1fr 360px;gap:22px}
-    @media (max-width:920px){ .grid-2{grid-template-columns:1fr} .cta{margin-left:0;justify-content:flex-start}}
-    h2{color:var(--accent);margin:0 0 10px 0;font-size:15px;letter-spacing:1px}
-    p.lead{color:var(--muted);margin:0 0 12px 0}
+
+    /* GRIDS */
+    .grid-2{display:grid;grid-template-columns:1fr 360px;gap:22px}
+    .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width:900px){
+      .grid-2,.cols{grid-template-columns:1fr}
+      .cta{margin-left:0}
+    }
+
+    h2{color:var(--accent);font-size:15px;letter-spacing:1px;margin-bottom:10px}
+    p.lead{color:var(--muted);margin-bottom:12px}
+
+    .line,.project{
+      padding:12px;
+      border-radius:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      border:1px solid rgba(255,255,255,0.03);
+      margin-bottom:12px;
+    }
+    .project{border-left:3px solid var(--accent)}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:6px}
+
     .skills{display:flex;flex-wrap:wrap;gap:10px}
     .skill{
-      background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
-      padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);
-      font-weight:700;font-size:13px
+      font-size:13px;font-weight:700;
+      padding:8px 10px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.04);
     }
-    .project{
-      border-left:3px solid var(--accent);
-      padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.006), transparent);
-      border-radius:8px;margin-bottom:12px
-    }
-    .meta{color:var(--muted);font-size:13px;margin-bottom:8px}
-    .list{display:flex;flex-direction:column;gap:12px}
-    .line{padding:12px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.03)}
-    .muted{color:var(--muted);font-size:13px}
-    .code-block{
-      background:#071015;padding:12px;border-radius:8px;border:1px solid rgba(0,255,159,0.08);
-      font-family:var(--mono);color:var(--accent);font-size:13px
-    }
-    .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    @media (max-width:760px){ .cols{grid-template-columns:1fr} }
+
     .pill{
-      display:inline-block;font-family:var(--mono);font-size:12px;color:var(--accent);
-      border:1px dashed rgba(0,255,159,0.18);padding:6px 8px;border-radius:999px;margin-right:8px;margin-bottom:8px
+      display:inline-block;
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--accent);
+      border:1px dashed rgba(0,255,159,0.18);
+      padding:6px 8px;
+      border-radius:999px;
+      margin:4px;
     }
-    footer{color:var(--muted);text-align:center;margin-top:18px;font-size:13px}
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-    .input, textarea{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);padding:10px;border-radius:8px;color:inherit;font-size:14px}
-    textarea{min-height:120px;grid-column:1/-1}
+
+    footer{text-align:center;color:var(--muted);font-size:13px}
   </style>
 </head>
+
 <body>
-  <main class="container">
+<main class="container">
 
-    <!-- HERO -->
-    <section class="card hero">
-      <div class="avatar">SS</div>
-      <div>
-        <h1>Sriven Srilakshmi</h1>
-        <div class="tagline">Network Security Operations • Firewall Engineering • Incident Troubleshooting • Secure Connectivity</div>
-        <div style="margin-top:10px" class="muted">
-          Palo Alto (PAN-OS, Panorama, GlobalProtect) • Cisco ASA / Firepower (FMC) • VPN • TCP/IP, VLANs, OSPF/BGP • PCAP/Wireshark • IDS/IPS • SIEM • Cloud Security • Automation
-        </div>
+<!-- HERO -->
+<section class="card hero">
+  <div class="avatar">SS</div>
+  <div>
+    <h1>Sriven Srilakshmi</h1>
+    <div class="muted">Network Security Operations • Firewall Engineering • Incident Troubleshooting</div>
+  </div>
+  <div class="cta">
+    <a class="btn" href="#skills">Skills</a>
+    <a class="btn" href="#experience">Experience</a>
+    <a class="btn" href="#projects">Projects</a>
+    <a class="btn" href="#contact">Contact</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="grid-2">
+  <div class="card">
+    <h2>About</h2>
+    <p class="lead">
+      I work in Network Security Operations with a strong focus on firewall engineering, secure remote access,
+      and incident-driven troubleshooting. I design, implement, and maintain firewall policies, analyze
+      traffic flows end-to-end, and secure network paths using packet-level analysis, log correlation,
+      and targeted automation.
+    </p>
+
+    <p class="lead">
+      I founded and lead an independent cybersecurity lab where I work with a small team to simulate
+      real-world network security scenarios, validate firewall and routing behavior, and build repeatable
+      troubleshooting and hardening workflows.
+    </p>
+
+    <p class="lead">
+      I am the author of the research paper
+      <em>“End-to-End Privacy-Aware Federated Learning for Wearable Health Devices via Encrypted Aggregation in Programmable Networks.”</em>
+      This work strengthened my understanding of encrypted traffic behavior and secure data flows.
+    </p>
+
+    <h2>What I do</h2>
+    <div class="cols">
+      <div class="line">
+        <strong>Firewall Operations</strong>
+        <div class="muted">Policy design • NAT • Panorama/FMC • VPN</div>
       </div>
-      <div class="cta">
-        <a class="btn" href="#skills">Skills</a>
-        <a class="btn" href="#academics">Academics</a>
-        <a class="btn" href="#projects">Projects</a>
-        <a class="btn" href="#contact">Contact</a>
+      <div class="line">
+        <strong>Troubleshooting</strong>
+        <div class="muted">PCAP/Wireshark • Logs • Root-cause analysis</div>
       </div>
-    </section>
+    </div>
 
-    <!-- ABOUT + RIGHT PANEL -->
-    <section class="grid-2">
-      <div class="card">
-        <h2>About</h2>
-        <p class="lead">
-I work in Network Security Operations with a strong focus on firewall engineering, secure remote access, and incident-driven troubleshooting. I design, implement, and maintain firewall policies, analyze traffic flows end-to-end, and secure network paths using packet-level analysis, log correlation, and targeted automation.
+    <h2>Toolbox</h2>
+    <div>
+      <span class="pill">Palo Alto</span>
+      <span class="pill">Cisco ASA</span>
+      <span class="pill">Firepower</span>
+      <span class="pill">Wireshark</span>
+      <span class="pill">SIEM</span>
+      <span class="pill">VPN</span>
+      <span class="pill">OSPF</span>
+      <span class="pill">BGP</span>
+      <span class="pill">Python</span>
+      <span class="pill">Ansible</span>
+    </div>
+  </div>
 
-In parallel, I founded and lead an independent cybersecurity lab where I collaborate with a small team to design hands-on security projects, simulate real-world network and security scenarios, and investigate practical security challenges. This work strengthens my ability to think systematically about network behavior, failure modes, and defensive controls.
+  <aside class="card">
+    <h2>Links</h2>
+    <div class="muted">LinkedIn: linkedin.com/in/p-sriven</div>
+    <div class="muted">GitHub: github.com/SrivenSrilakshmi</div>
+    <div class="muted">Email: spulkaram1@toromail.csudh.edu</div>
+  </aside>
+</section>
 
-I have strong fundamentals in TCP/IP, routing and switching, VLANs, NAT, and dynamic routing protocols such as OSPF and BGP, which I apply directly when diagnosing complex connectivity and security issues across enterprise-style environments.    
-
-I am the author of the research paper “End-to-End Privacy-Aware Federated Learning for Wearable Health Devices via Encrypted Aggregation in Programmable Networks.”
-
-The paper explores secure data aggregation using encryption and programmable network elements to preserve privacy in distributed systems. This research strengthens my understanding of secure data flows, encrypted traffic handling, and privacy-aware system design — concepts that directly inform my approach to network security and traffic analysis.</p> 
-        <h2 style="margin-top:18px">What I do</h2>
-        <div class="cols" style="margin-top:10px"> 
-
-            <section id="experience" class="card">
+<!-- EXPERIENCE -->
+<section id="experience" class="card">
   <h2>Professional & Technical Experience</h2>
 
   <div class="project">
-    <div class="meta">Independent Work • Team Leadership • Network Security</div>
-    <h3>Independent Cybersecurity Lab — Founder & Lead</h3>
+    <div class="meta">Founder & Lead</div>
+    <h3>Independent Cybersecurity Lab</h3>
     <p class="muted">
-      Founded and lead an independent cybersecurity lab focused on hands-on network security engineering
-      and defensive operations. Work with a small team to design and test real-world security scenarios
-      including firewall policy validation, secure connectivity, routing behavior, and traffic analysis.
-    </p>
-    <p class="muted">
-      Regularly simulate failures and incidents, analyze packet captures, validate firewall and NAT
-      behavior, and develop repeatable troubleshooting and hardening workflows using automation where applicable.
-    </p>
-    <div class="muted"><strong>Focus:</strong> Firewalls, VPNs, PCAP/Wireshark, routing/NAT, security controls</div>
-  </div>
-
-  <div class="project">
-    <div class="meta">Research • Secure Systems • Encrypted Traffic</div>
-    <h3>Research Author — Published Paper</h3>
-    <p class="muted">
-      Authored the research paper
-      <em>“End-to-End Privacy-Aware Federated Learning for Wearable Health Devices via Encrypted Aggregation in Programmable Networks.”</em>
-      The work examines secure data aggregation using encryption and programmable network elements to preserve privacy
-      in distributed systems.
-    </p>
-    <p class="muted">
-      This research strengthened my understanding of encrypted traffic behavior, aggregation points,
-      and secure data paths — concepts directly applicable to firewall design, traffic inspection,
-      and network security architecture.
+      Lead hands-on security labs focused on firewall engineering, routing behavior,
+      traffic analysis, and incident simulation using PCAP and logs.
     </p>
   </div>
 
   <div class="project">
-    <div class="meta">Security Operations • Industry Experience</div>
+    <div class="meta">Industry</div>
     <h3>Cyber Security Analyst — Crystalline Software</h3>
     <p class="muted">
-      Supported security operations by analyzing alerts and logs, assisting with incident investigation,
-      and contributing to threat detection and reporting workflows. Gained hands-on exposure to SIEM tools,
-      security monitoring, and operational security processes.
-    </p>
-    <div class="muted"><strong>Tools:</strong> SIEM, log analysis, security monitoring</div>
-  </div>
-
-  <div class="project">
-    <div class="meta">Academic • Applied Security</div>
-    <h3>Research Assistant — California State University, Dominguez Hills</h3>
-    <p class="muted">
-      Conducted applied research in cybersecurity and secure systems, supporting projects related to
-      privacy-aware communication and secure network design. Assisted with implementation, evaluation,
-      and documentation of security-focused experiments.
+      Supported security monitoring, alert triage, and SIEM-based investigations.
     </p>
   </div>
 
   <div class="project">
-    <div class="meta">Foundational Security Experience</div>
-    <h3>Cyber Security Intern — The Hague University of Applied Sciences</h3>
+    <div class="meta">Academic</div>
+    <h3>Research Assistant — CSU Dominguez Hills</h3>
     <p class="muted">
-      Participated in cybersecurity training and practical exercises focused on security fundamentals,
-      network analysis, and defensive techniques. Built a foundation in structured security assessment
-      and technical documentation.
+      Conducted applied cybersecurity research and secure systems analysis.
     </p>
   </div>
 </section>
- 
 
-          <div class="line">
-            <strong>Firewall Operations</strong>
-            <div class="muted" style="margin-top:6px">
-              • Policy design & rule optimization<br>
-              • NAT/No-NAT, object/group strategy<br>
-              • Change workflows (Panorama/FMC style)<br>
-              • VPN triage (site-to-site & remote access)
-            </div>
-          </div>
-          <div class="line">
-            <strong>Troubleshooting</strong>
-            <div class="muted" style="margin-top:6px">
-              • PCAP + Wireshark analysis<br>
-              • Session/flow tracing & rule-hit validation<br>
-              • Threat/URL logs correlation<br>
-              • Root-cause + preventive controls
-            </div>
-          </div>
-        </div>
+<!-- SKILLS -->
+<section id="skills" class="card">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skill">Firewall Engineering</div>
+    <div class="skill">Network Security Ops</div>
+    <div class="skill">Palo Alto / Cisco</div>
+    <div class="skill">TCP/IP • VLAN • NAT</div>
+    <div class="skill">OSPF • BGP</div>
+    <div class="skill">IDS / IPS</div>
+    <div class="skill">SIEM</div>
+    <div class="skill">Automation</div>
+  </div>
+</section>
 
-        <h2 style="margin-top:18px">Toolbox</h2>
-        <div style="margin-top:10px">
-          <span class="pill">Wireshark</span>
-          <span class="pill">PCAP</span>
-          <span class="pill">Panorama</span>
-          <span class="pill">GlobalProtect</span>
-          <span class="pill">ASA</span>
-          <span class="pill">Firepower</span>
-          <span class="pill">FMC</span>
-          <span class="pill">VPN</span>
-          <span class="pill">NAT</span>
-          <span class="pill">OSPF</span>
-          <span class="pill">BGP</span>
-          <span class="pill">SIEM</span>
-          <span class="pill">IDS/IPS</span>
-          <span class="pill">AWS/Azure/GCP</span>
-          <span class="pill">Python</span>
-          <span class="pill">Ansible</span>
-          <span class="pill">PowerShell</span>
-        </div>
-      </div>
+<!-- PROJECTS -->
+<section id="projects" class="card">
+  <h2>Security Projects</h2>
 
-      <!-- REPLACEMENT PANEL -->
-      <aside class="card">
-        <h2>Security Impact</h2>
-        <div class="list">
-          <div class="line">
-            <strong>Availability + Stability</strong>
-            <div class="muted">Reduce outages by validating routing/NAT/policy changes and using repeatable troubleshooting workflows.</div>
-          </div>
-          <div class="line">
-            <strong>Visibility + Response</strong>
-            <div class="muted">Correlate firewall logs, PCAP evidence, IDS/IPS alerts, and SIEM events to accelerate incident triage.</div>
-          </div>
-          <div class="line">
-            <strong>Least Privilege</strong>
-            <div class="muted">Enforce segmentation, restrict east-west traffic, and design rules around explicit business flows.</div>
-          </div>
-          <div class="line">
-            <strong>Automation (Force Multiplier)</strong>
-            <div class="muted">Use scripting to standardize checks, reduce manual errors, and speed up change windows.</div>
-          </div>
-        </div>
+  <div class="project">
+    <h3>Firewall Policy Optimization</h3>
+    <p class="muted">Least-privilege rules, NAT validation, rule-hit analysis.</p>
+  </div>
 
-        <div class="line" style="margin-top:12px">
-          <strong>Links</strong>
-          <div class="muted" style="margin-top:6px">LinkedIn: <em>linkedin.com/in/p-sriven</em></div>
-          <div class="muted">GitHub: <em>github.com/SrivenSrilakshmi</em></div>
-          <div class="muted">Email: <em>spulkaram1@toromail.csudh.edu</em></div>
-        </div>
-      </aside>
-    </section>
+  <div class="project">
+    <h3>VPN Troubleshooting Playbooks</h3>
+    <p class="muted">GlobalProtect / ASA-style remote access diagnosis.</p>
+  </div>
+</section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="card">
-      <h2>Skills</h2>
-      <div class="skills" style="margin-top:10px">
-        <div class="skill">Network Security Operations</div>
-        <div class="skill">Firewall Engineering (Policy, NAT, Zones)</div>
-        <div class="skill">Palo Alto: PAN-OS, Panorama</div>
-        <div class="skill">Palo Alto: GlobalProtect</div>
-        <div class="skill">Cisco: ASA, VPN</div>
-        <div class="skill">Cisco: Firepower, FMC</div>
-        <div class="skill">TCP/IP, Routing, Switching</div>
-        <div class="skill">VLANs, OSPF, BGP</div>
-        <div class="skill">NAT, ACLs, Segmentation</div>
-        <div class="skill">Wireshark, PCAP Analysis</div>
-        <div class="skill">Firewall Logs & Threat Analysis</div>
-        <div class="skill">IDS/IPS</div>
-        <div class="skill">SIEM (Log Correlation)</div>
-        <div class="skill">Cloud Security (AWS/Azure/GCP)</div>
-        <div class="skill">Automation: Python / Ansible / PowerShell</div>
-      </div>
-    </section>
+<!-- CONTACT -->
+<section id="contact" class="card">
+  <h2>Contact</h2>
+  <p class="muted">Open to Network Security & Firewall Engineering roles.</p>
+</section>
 
-    <!-- ACADEMICS / COLLEGE ACTIVITIES -->
-    <section id="academics" class="card">
-      <h2>Academic & Campus Experience</h2>
-      <div class="list" style="margin-top:10px">
-        <div class="line">
-          <div class="meta">California State University, Dominguez Hills • Student Cybersecurity Lab</div>
-          <h3 style="margin:6px 0">Founder & Student Lead, Cybersecurity Lab</h3>
-          <p class="muted">
-            Initiated and helped build a student-run cybersecurity lab to give classmates a practical place to experiment with security tools and realistic attack/defense scenarios. Set up virtualized lab environments with segmented networks, vulnerable hosts, and monitoring, and worked independently and with teammates to run capture-the-flag exercises, blue-team investigations, and incident response simulations.
-          </p>
-          <div class="muted"><strong>Highlights:</strong> Lab design & tooling • Peer mentoring • Independent project work • Team-based incident simulations</div>
-        </div>
+<footer>
+  © <span id="year"></span> Sriven Srilakshmi
+</footer>
 
-        <div class="line">
-          <div class="meta">Research • Cybersecurity</div>
-          <h3 style="margin:6px 0">Published Research Paper</h3>
-          <p class="muted">
-            Co-authored a cybersecurity research paper as part of my academic work, contributing to problem definition, experimental design, and analysis. Collaborated closely with faculty and peers, documented findings clearly, and presented results to both technical and non-technical audiences. (You can add the exact paper title, conference/journal name, and year here.)
-          </p>
-          <div class="muted"><strong>Focus:</strong> Applied cybersecurity research • Writing & presentation • Collaboration with teammates and faculty</div>
-        </div>
-      </div>
-    </section>
+</main>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="card">
-      <h2>Security Operations Projects</h2>
-
-      <div class="project">
-        <div class="meta">Firewall Engineering • Change Control • Policy Validation</div>
-        <h3 style="margin:6px 0">Firewall Policy Optimization & Segmentation (Lab / Project)</h3>
-        <p class="muted">
-          Designed segmented network zones with least-privilege rules, NAT strategy, and service-object hygiene.
-          Validated access paths with test plans, monitored logs for rule hits, and tightened policies to reduce unnecessary exposure.
-        </p>
-        <div class="muted"><strong>Keywords:</strong> Zones, NAT, rulebase cleanup, logging, validation</div>
-      </div>
-
-      <div class="project">
-        <div class="meta">VPN • Remote Access • Incident Troubleshooting</div>
-        <h3 style="margin:6px 0">VPN Connectivity Triage Playbook (GlobalProtect / ASA style)</h3>
-        <p class="muted">
-          Built a troubleshooting flow for remote access VPN issues: auth failures, split tunneling, DNS, route injection,
-          certificate problems, and user-to-app reachability. Correlated client logs with firewall logs to isolate root cause.
-        </p>
-        <div class="muted"><strong>Keywords:</strong> GlobalProtect, AnyConnect/ASA, routing, DNS, certs</div>
-      </div>
-
-      <div class="project">
-        <div class="meta">PCAP • Wireshark • Log Correlation</div>
-        <h3 style="margin:6px 0">Packet-to-Policy Root Cause Analysis</h3>
-        <p class="muted">
-          Performed end-to-end traffic analysis using PCAPs to identify drops due to asymmetric routing, NAT mismatch,
-          MTU/fragmentation, or misordered firewall rules. Mapped packet behavior to session logs and rule hits.
-        </p>
-        <div class="muted"><strong>Keywords:</strong> Wireshark filters, TCP handshake, retransmits, NAT/ACL mapping</div>
-      </div>
-
-      <div class="project">
-        <div class="meta">Automation • Reporting • Guardrails</div>
-        <h3 style="margin:6px 0">Security Ops Automation (Python / Ansible / PowerShell)</h3>
-        <p class="muted">
-          Automated repetitive checks: policy review reports, object usage, rule hit counts, and config drift alerts.
-          Designed scripts/playbooks to reduce manual errors and speed up change windows.
-        </p>
-        <div class="muted"><strong>Keywords:</strong> APIs, automation, validation, reporting</div>
-      </div>
-    </section>
-
-    <!-- TECHNICAL SNAPSHOT -->
-    <section class="card">
-      <h2>Technical snapshot</h2>
-      <div class="cols">
-        <div>
-          <div class="muted" style="margin-bottom:6px">Troubleshooting flow (example)</div>
-          <div class="code-block">
-            1) Reproduce → 2) Identify src/dst/port → 3) Check route/NAT<br>
-            4) Verify policy hit → 5) Inspect threat/URL logs → 6) PCAP<br>
-            7) Fix → 8) Validate → 9) Document / prevent recurrence
-          </div>
-        </div>
-        <div>
-          <div class="muted" style="margin-bottom:6px">Wireshark focus</div>
-          <div class="muted">
-            • TCP handshake, resets, retransmissions<br>
-            • TLS handshake failures, cert-chain symptoms<br>
-            • MTU/fragmentation patterns, ICMP needed/blocked<br>
-            • DNS resolution vs. route reachability checks
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <p class="muted">
-        Open to Network Security Operations / Firewall Engineering roles and security engineering internships.
-        Share the full job description anytime — I can tailor keywords, project language, and ATS alignment further.
-      </p>
-
-      <form onsubmit="event.preventDefault(); alert('Replace with a real email handler or mailto.');">
-        <div class="contact-grid">
-          <input class="input" placeholder="Name" required />
-          <input class="input" placeholder="Email" required />
-          <textarea placeholder="Brief message / inquiry" required></textarea>
-        </div>
-        <div style="margin-top:10px">
-          <button class="btn" type="submit">Send message</button>
-        </div>
-      </form>
-    </section>
-
-    <footer>
-      © <span id="year"></span> Sriven Srilakshmi — Network Security Ops & Firewall Engineering — Built with intent.
-    </footer>
-  </main>
-
-  <script>
-    document.getElementById('year').innerText = new Date().getFullYear();
-  </script>
+<script>
+  document.getElementById("year").innerText = new Date().getFullYear();
+</script>
 </body>
 </html>
