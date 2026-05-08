@@ -1,0 +1,18 @@
+{
+  "roles": {
+    "ExampleAppRole": {
+      "attached_managed_policies": [
+        "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+      ],
+      "inline_policy_names": [
+        "ExampleLeastPrivilegePolicy"
+      ]
+    },
+    "ExampleReadOnlyRole": {
+      "attached_managed_policies": [
+        "arn:aws:iam::aws:policy/ReadOnlyAccess"
+      ],
+      "inline_policy_names": []
+    }
+  }
+}

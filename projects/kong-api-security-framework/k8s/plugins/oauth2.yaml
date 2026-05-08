@@ -1,0 +1,11 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: api-oauth2
+  namespace: api-security-demo
+plugin: oauth2
+config:
+  enable_authorization_code: true
+  enable_client_credentials: true
+  mandatory_scope: false
+  token_expiration: 3600

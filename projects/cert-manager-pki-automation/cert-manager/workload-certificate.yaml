@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: app-server-tls
+  namespace: pki-demo
+spec:
+  secretName: app-server-tls
+  duration: 2160h
+  renewBefore: 360h
+  commonName: app-server.pki-demo.svc.cluster.local
+  dnsNames:
+  - app-server.pki-demo.svc.cluster.local
+  issuerRef:
+    name: portfolio-ca-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
